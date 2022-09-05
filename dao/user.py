@@ -26,6 +26,6 @@ class UserDAO:
         self.session.delete(user)
         self.session.commit()
 
-    def get_by_username(self, username):   # ????????????
+    def get_by_username(self, username):
         user = self.session.query(User).filter(User.username == username)
         return user
