@@ -43,12 +43,12 @@ class UserService:
         return self.dao.delete(uid)
 
     def get_hash(self, password):
-        return hashlib.pbkdf2_hmac(
+        return base64.b64encode(hashlib.pbkdf2_hmac(
             'sha256',
             password.encode('utf-8'),  # Convert the password to bytes
             PWD_HASH_SALT,
             PWD_HASH_ITERATIONS
-        ).decode("utf-8", "ignore")
+        ))
 
     def get_by_username(self, username):
         return self.dao.get_by_username(username)
