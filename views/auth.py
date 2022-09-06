@@ -13,7 +13,7 @@ class AuthsView(Resource):
         password = data.get("password")
         if None in [username, password]:
             return "", 400
-        tokens = auth_service.generate_tokens(username, password, is_refresh=True)
+        tokens = auth_service.generate_tokens(username=username, password=password)
         return tokens, 201
 
     def put(self):
