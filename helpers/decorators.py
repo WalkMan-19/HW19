@@ -32,6 +32,6 @@ def admin_required(func):
             print("JWT Decode Exception", e)
             abort(401)
         if role != "admin":
-            abort(402)
+            abort(403)
         return func(*args, **kwargs)
     return wrapper
